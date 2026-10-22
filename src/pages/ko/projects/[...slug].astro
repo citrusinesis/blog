@@ -1,0 +1,12 @@
+---
+import ProjectPage, {
+	type Props as ProjectPageProps,
+} from "@/features/project/ProjectPage.astro";
+
+export { getKoreanStaticPaths as getStaticPaths } from "@/features/project/lib/routes";
+
+type Props = ProjectPageProps;
+const { project, metadata } = Astro.props;
+---
+
+<ProjectPage project={project} metadata={metadata} />

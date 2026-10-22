@@ -1,0 +1,32 @@
+---
+import type { ImageMetadata } from "astro";
+import BaseHead from "@/layouts/BaseHead.astro";
+import Footer from "@/layouts/Footer.astro";
+import Header from "@/layouts/Header.astro";
+import { messages } from "@/lib/i18n/messages";
+import { type LanguageMetadata, localeFromPath } from "@/lib/i18n/ui";
+
+interface Props {
+	title: string;
+	description: string;
+	image?: ImageMetadata;
+	metadata?: LanguageMetadata;
+}
+const locale = localeFromPath(Astro.url.pathname);
+const ui = messages[locale];
+---
+
+<!doctype html>
+<html lang={locale}>
+	<head>
+		<BaseHead {...Astro.props} />
+	</head>
+	<body>
+		<a class="skip-link" href="#main">{ui.skip}</a>
+		<div class="site-shell">
+			<Header />
+			<main id="main" tabindex="-1"><slot /></main>
+			<Footer />
+		</div>
+	</body>
+</html>

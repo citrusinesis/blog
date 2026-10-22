@@ -1,0 +1,49 @@
+---
+import type { CollectionEntry } from "astro:content";
+import MermaidDiagrams from "@/components/MermaidDiagrams.astro";
+import { TextLink } from "@/components/text-link";
+import { SITE_TITLE } from "@/consts";
+import Base from "@/layouts/Base.astro";
+import { messages } from "@/lib/i18n/messages";
+import type { LanguageMetadata } from "@/lib/i18n/ui";
+import { localeFromPath, localizedPath } from "@/lib/i18n/ui";
+
+type Props = CollectionEntry<"project">["data"] & {
+	metadata: LanguageMetadata;
+};
+const { name, description, href, lang, metadata } = Astro.props;
+const locale = localeFromPath(Astro.url.pathname);
+const ui = messages[locale];
+---
+
+<Base
+	title={`${name} — ${SITE_TITLE}`}
+	description={description}
+	metadata={metadata}
+>
+	<TextLink className="back-link" href={localizedPath("/projects/", locale)}>
+		<span aria-hidden="true">←</span>
+		{ui.allProjects}
+	</TextLink>
+	{lang !== locale && (
+		<p class="content-language">
+			{ui.contentLanguage}:{" "}
+			<span>
+				{new Intl.DisplayNames([locale], { type: "language" }).of(lang) ?? lang}
+			</span>
+		</p>
+	)}
+	<article lang={lang}>
+		<header class="article-heading">
+			<h1>{name}</h1>
+			<p class="article-date">{description}</p>
+			{href && (
+				<TextLink href={href} lang={locale}>
+					{ui.visitProject} <span aria-hidden="true">↗</span>
+				</TextLink>
+			)}
+		</header>
+		<div class="prose site-prose"><slot /></div>
+	</article>
+	<MermaidDiagrams />
+</Base>

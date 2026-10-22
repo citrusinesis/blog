@@ -1,0 +1,63 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import MermaidDiagrams from "@/components/MermaidDiagrams.astro";
+import { TextLink } from "@/components/text-link";
+import { SITE_TITLE } from "@/consts";
+import { DateTime } from "@/features/blog/components/date-time";
+import Base from "@/layouts/Base.astro";
+import { messages } from "@/lib/i18n/messages";
+import type { LanguageMetadata } from "@/lib/i18n/ui";
+import { localeFromPath, localizedPath } from "@/lib/i18n/ui";
+
+type Props = CollectionEntry<"blog">["data"] & { metadata: LanguageMetadata };
+const { title, description, pubDate, updatedDate, heroImage, lang, metadata } =
+	Astro.props;
+const locale = localeFromPath(Astro.url.pathname);
+const ui = messages[locale];
+---
+
+<Base
+	title={`${title} — ${SITE_TITLE}`}
+	description={description}
+	image={heroImage}
+	metadata={metadata}
+>
+	<TextLink className="back-link" href={localizedPath("/blog/", locale)}>
+		<span aria-hidden="true">←</span>
+		{ui.allWriting}
+	</TextLink>
+	{lang !== locale && (
+		<p class="content-language">
+			{ui.contentLanguage}:{" "}
+			<span>
+				{new Intl.DisplayNames([locale], { type: "language" }).of(lang) ?? lang}
+			</span>
+		</p>
+	)}
+	<article lang={lang}>
+		<header class="article-heading">
+			<h1>{title}</h1>
+			<p class="article-date" lang={locale}>
+				<DateTime date={pubDate} locale={locale} />
+				{updatedDate && (
+					<span>
+						{" "}
+						· {ui.updated} <DateTime date={updatedDate} locale={locale} />
+					</span>
+				)}
+			</p>
+		</header>
+		{heroImage && (
+			<Image
+				width={1120}
+				height={560}
+				src={heroImage}
+				alt=""
+				class="article-image"
+			/>
+		)}
+		<div class="prose site-prose"><slot /></div>
+	</article>
+	<MermaidDiagrams />
+</Base>

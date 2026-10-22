@@ -1,0 +1,136 @@
+{
+	"name": "송지호",
+	"headline": "Head, DX Team · Asteromorph",
+	"email": "me@jihosong.dev",
+	"links": [
+		{
+			"label": "GitHub",
+			"href": "https://github.com/citrusinesis"
+		},
+		{
+			"label": "LinkedIn",
+			"href": "https://www.linkedin.com/in/citrusinesis/"
+		}
+	],
+	"experience": [
+		{
+			"organization": "Asteromorph",
+			"role": "Head",
+			"team": "DX Team",
+			"start": "2026-01",
+			"current": true,
+			"responsibilities": [],
+			"achievements": []
+		},
+		{
+			"organization": "Stealien",
+			"role": "백엔드 개발자",
+			"start": "2023-07",
+			"end": "2024-01",
+			"location": "서울",
+			"highlights": [
+				"ASEAN Cyber Shield의 온라인 사이버보안 교육 및 해킹방어대회 플랫폼 서버를 개발했습니다.",
+				"Jeopardy 스타일 해킹방어대회 서버를 구축하고 Django로 프로토타입을 구현했습니다."
+			]
+		}
+	],
+	"education": [
+		{
+			"institution": "숭실대학교",
+			"qualification": "컴퓨터학부 학사 재학",
+			"start": "2022",
+			"expectedGraduation": {
+				"year": 2028,
+				"semester": 2
+			},
+			"location": "서울",
+			"highlights": [
+				"주요 수강 과목: 운영체제, 컴퓨터 네트워크, 데이터베이스, 알고리즘, 자료구조, 컴퓨터 구조."
+			]
+		},
+		{
+			"institution": "한국디지털미디어고등학교",
+			"qualification": "해킹방어과",
+			"start": "2018-03",
+			"end": "2021-02"
+		}
+	],
+	"awards": [
+		{
+			"name": "UNPACK - JunctionX ASIA",
+			"distinction": "2nd Prize",
+			"year": 2023,
+			"highlights": [
+				"부산 관광 계획 보조 애플리케이션을 Next.js와 NestJS로 개발했습니다.",
+				"초기 기획, 데이터 가공·구조 설계, 웹 컴포넌트 생성을 담당했습니다."
+			]
+		},
+		{
+			"name": "영남이공대 해킹챔피언십",
+			"distinction": "장려상",
+			"year": 2019
+		}
+	],
+	"certifications": [
+		{
+			"name": "정보처리기능사",
+			"issuer": "한국산업인력공단"
+		},
+		{
+			"name": "네트워크관리사 2급",
+			"issuer": "한국정보통신자격협회"
+		}
+	],
+	"skills": [
+		{
+			"name": "프로그래밍 언어",
+			"items": [
+				"Rust",
+				"Go",
+				"TypeScript",
+				"JavaScript",
+				"Java",
+				"Kotlin",
+				"Python",
+				"SQL"
+			]
+		},
+		{
+			"name": "시스템·데이터",
+			"items": ["ETL 파이프라인", "웹 크롤러", "에이전트용 VMM"]
+		},
+		{
+			"name": "인프라",
+			"items": ["Kubernetes", "OpenTofu", "GPU 서버 운영"]
+		},
+		{
+			"name": "백엔드",
+			"items": ["Axum", "Echo", "NestJS", "Spring Boot", "FastAPI"]
+		},
+		{
+			"name": "프론트엔드",
+			"items": ["React", "Next.js", "Tanstack Start", "Vite"]
+		},
+		{
+			"name": "데이터베이스",
+			"items": ["PostgreSQL", "MySQL", "MariaDB", "MongoDB", "Redis"]
+		},
+		{
+			"name": "도구·인프라",
+			"items": [
+				"Docker",
+				"Kubernetes",
+				"Proxmox",
+				"Terraform",
+				"OpenTofu",
+				"Git",
+				"GitHub",
+				"GitHub Actions",
+				"AWS",
+				"GCP"
+			]
+		}
+	],
+	"printProjects": ["network-tunneler"],
+	"summary": "Rust를 주로 사용하며 시스템, 데이터 파이프라인, 인프라를 개발합니다."
+}

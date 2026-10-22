@@ -1,0 +1,5 @@
+# Native binaries required by the Astro build and Wrangler.
+allowBuilds:
+  esbuild: true
+  sharp: true
+  workerd: true

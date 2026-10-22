@@ -1,0 +1,63 @@
+---
+// Imported here so that every page that renders <BaseHead /> includes the global styles.
+import "@/styles/global.css";
+import type { ImageMetadata } from "astro";
+import { SITE_TITLE } from "@/consts";
+import { initializeTheme } from "@/features/theme/scripts/bootstrap";
+import {
+	type LanguageMetadata,
+	localeFromPath,
+	localizedPath,
+} from "@/lib/i18n/ui";
+
+interface Props {
+	title: string;
+	description: string;
+	image?: ImageMetadata;
+	metadata?: LanguageMetadata;
+}
+
+const themeScript = `(${initializeTheme.toString()})();`;
+const { title, description, image, metadata } = Astro.props;
+const locale = localeFromPath(Astro.url.pathname);
+const canonicalURL = new URL(
+	metadata?.canonicalPath ?? Astro.url.pathname,
+	Astro.site,
+);
+const alternates =
+	metadata?.alternates ??
+	(["en", "ko"] as const).map((lang) => ({
+		lang,
+		href: localizedPath(Astro.url.pathname, lang),
+	}));
+---
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fdfdfc">
+<script is:inline set:html={themeScript} />
+<link rel="sitemap" href="/sitemap-index.xml">
+<link
+	rel="alternate"
+	type="application/rss+xml"
+	title={SITE_TITLE}
+	href={new URL(localizedPath("/rss.xml", locale), Astro.site)}
+>
+<meta name="generator" content={Astro.generator}>
+
+<link rel="canonical" href={canonicalURL}>
+{alternates.map(({ lang, href }) => (
+	<link rel="alternate" hreflang={lang} href={new URL(href, Astro.site)} />
+))}
+
+<title>{title}</title>
+<meta name="description" content={description}>
+
+<meta property="og:type" content="website">
+<meta property="og:url" content={canonicalURL}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+{image && <meta property="og:image" content={new URL(image.src, Astro.url)}>}
+
+<meta name="twitter:card" content={image ? "summary_large_image" : "summary"}>

@@ -1,0 +1,134 @@
+{
+	"name": "Jiho Song",
+	"headline": "Head, DX Team · Asteromorph",
+	"email": "me@jihosong.dev",
+	"links": [
+		{
+			"label": "GitHub",
+			"href": "https://github.com/citrusinesis"
+		},
+		{
+			"label": "LinkedIn",
+			"href": "https://www.linkedin.com/in/citrusinesis/"
+		}
+	],
+	"experience": [
+		{
+			"organization": "Asteromorph",
+			"role": "Head",
+			"team": "DX Team",
+			"start": "2026-01",
+			"current": true,
+			"responsibilities": [],
+			"achievements": []
+		},
+		{
+			"organization": "Stealien",
+			"role": "Backend Developer",
+			"start": "2023-07",
+			"end": "2024-01",
+			"location": "Seoul, South Korea",
+			"highlights": [
+				"Developed servers for ASEAN Cyber Shield, an online cybersecurity training and capture-the-flag competition platform.",
+				"Built a Jeopardy-style CTF server and implemented a prototype using Django."
+			]
+		}
+	],
+	"education": [
+		{
+			"institution": "Soongsil University",
+			"qualification": "B.S. in Computer Science (in progress)",
+			"start": "2022",
+			"expectedGraduation": {
+				"year": 2028,
+				"semester": 2
+			},
+			"location": "Seoul, South Korea",
+			"highlights": [
+				"Relevant coursework: Operating Systems, Computer Networks, Databases, Algorithms, Data Structures, Computer Architecture."
+			]
+		},
+		{
+			"institution": "Korea Digital Media High School",
+			"qualification": "Hacking Defense",
+			"start": "2018-03",
+			"end": "2021-02"
+		}
+	],
+	"awards": [
+		{
+			"name": "UNPACK - JunctionX ASIA",
+			"distinction": "2nd Prize",
+			"year": 2023,
+			"highlights": [
+				"Built a Busan travel-planning application with Next.js and NestJS.",
+				"Contributed to initial planning, data processing, data structure design, and web components."
+			]
+		},
+		{
+			"name": "Yeungnam University College Hacking Championship",
+			"distinction": "Encouragement Award (장려상)",
+			"year": 2019
+		}
+	],
+	"certifications": [
+		{
+			"name": "Craftsman Information Processing (정보처리기능사)",
+			"issuer": "Human Resources Development Service of Korea"
+		},
+		{
+			"name": "Network Administrator Level 2 (네트워크관리사 2급)",
+			"issuer": "Korea Information and Communications Qualification Association"
+		}
+	],
+	"skills": [
+		{
+			"name": "Languages",
+			"items": [
+				"Rust",
+				"Go",
+				"TypeScript",
+				"JavaScript",
+				"Java",
+				"Kotlin",
+				"Python",
+				"SQL"
+			]
+		},
+		{
+			"name": "Systems & Data",
+			"items": ["ETL pipelines", "Web crawlers", "VMMs for agents"]
+		},
+		{
+			"name": "Infrastructure",
+			"items": ["Kubernetes", "OpenTofu", "GPU server operations"]
+		},
+		{
+			"name": "Backend",
+			"items": ["Echo", "Fiber", "NestJS", "Spring Boot", "FastAPI", "Django"]
+		},
+		{
+			"name": "Frontend",
+			"items": ["React", "Next.js", "Vite"]
+		},
+		{
+			"name": "Databases",
+			"items": ["MySQL", "PostgreSQL", "MariaDB", "MongoDB", "Redis"]
+		},
+		{
+			"name": "Tools and infrastructure",
+			"items": [
+				"Docker",
+				"Podman",
+				"Git",
+				"GitHub",
+				"GitLab",
+				"GitHub Actions",
+				"Amazon EC2",
+				"GCP"
+			]
+		}
+	],
+	"printProjects": ["network-tunneler"],
+	"summary": "Software engineer working primarily in Rust across systems, data pipelines, and infrastructure."
+}

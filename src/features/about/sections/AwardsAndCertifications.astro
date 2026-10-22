@@ -1,0 +1,38 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { CvEntry } from "@/features/about/components/cv-entry";
+import { messages } from "@/lib/i18n/messages";
+import { localeFromPath } from "@/lib/i18n/ui";
+
+interface Props {
+	awards: CollectionEntry<"cv">["data"]["awards"];
+	certifications: CollectionEntry<"cv">["data"]["certifications"];
+}
+const { awards, certifications } = Astro.props;
+const locale = localeFromPath(Astro.url.pathname);
+---
+
+{(awards.length > 0 || certifications.length > 0) && (
+	<section class="cv-section" aria-labelledby="cv-awards-certifications">
+		<h2 id="cv-awards-certifications" lang={locale}>
+			{messages[locale].cvAwardsAndCertifications}
+		</h2>
+		{awards.map((entry) => (
+			<CvEntry
+				title={entry.name}
+				subtitle={entry.distinction}
+				start={entry.year?.toString()}
+				highlights={entry.highlights}
+				dateLocale={locale}
+			/>
+		))}
+		{certifications.map((entry) => (
+			<CvEntry
+				title={entry.name}
+				subtitle={entry.issuer}
+				start={entry.date}
+				dateLocale={locale}
+			/>
+		))}
+	</section>
+)}

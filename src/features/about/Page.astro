@@ -1,0 +1,66 @@
+---
+import "@/styles/cv.css";
+import "@/styles/print.css";
+import { getCv } from "@/features/about/lib/queries";
+import AwardsAndCertifications from "@/features/about/sections/AwardsAndCertifications.astro";
+import Education from "@/features/about/sections/Education.astro";
+import Experience from "@/features/about/sections/Experience.astro";
+import Projects from "@/features/about/sections/Projects.astro";
+import Skills from "@/features/about/sections/Skills.astro";
+import Base from "@/layouts/Base.astro";
+import { messages } from "@/lib/i18n/messages";
+import { localeFromPath } from "@/lib/i18n/ui";
+
+const locale = localeFromPath(Astro.url.pathname);
+const ui = messages[locale];
+const { cv, metadata, printProjects } = await getCv(locale);
+---
+
+<Base
+	title={`${cv.name} — ${ui.cvTitle}`}
+	description={cv.summary ?? cv.headline ?? cv.name}
+	metadata={metadata}
+>
+	<article class="cv" lang={cv.lang}>
+		<header class="cv-heading">
+			<p class="cv-kicker" lang={locale}>{ui.cvTitle}</p>
+			<h1>{cv.name}</h1>
+			{cv.headline && <p class="cv-headline">{cv.headline}</p>}
+			{(cv.phone || cv.email || cv.links.length > 0) && (
+				<ul class="cv-contacts" aria-label={ui.cvContact}>
+					{cv.phone && (
+						<li>
+							<a href={`tel:${cv.phone.replace(/[^+0-9]/g, "")}`}>{cv.phone}</a>
+						</li>
+					)}
+					{cv.email && (
+						<li>
+							<a href={`mailto:${cv.email}`}>{cv.email}</a>
+						</li>
+					)}
+					{cv.links.map((link) => (
+						<li>
+							<a
+								href={link.href}
+								data-print-url={
+									link.label !== link.href ? link.href : undefined
+								}
+							>
+								{link.label}
+							</a>
+						</li>
+					))}
+				</ul>
+			)}
+			{cv.summary && <p class="cv-summary">{cv.summary}</p>}
+		</header>
+		<Experience entries={cv.experience} />
+		<Projects entries={printProjects} />
+		<Education entries={cv.education} />
+		<AwardsAndCertifications
+			awards={cv.awards}
+			certifications={cv.certifications}
+		/>
+		<Skills entries={cv.skills} />
+	</article>
+</Base>

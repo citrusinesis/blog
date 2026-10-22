@@ -1,0 +1,30 @@
+<script>
+const sources = document.querySelectorAll<HTMLPreElement>("pre.pele-diagram");
+
+// Dynamic import keeps pele out of pages without diagrams; pele/lazy then fetches only the diagram types in use.
+if (sources.length > 0) {
+	const { mountAsync } = await import("pele/lazy");
+	// pele measures labels with canvas, so the web font must be ready or widths come out for the fallback font.
+	await document.fonts.ready;
+	const bodyStyle = getComputedStyle(document.body);
+	const fontFamily = bodyStyle.fontFamily;
+	const fontSize = Number.parseFloat(bodyStyle.fontSize);
+
+	await Promise.all(
+		[...sources].map(async (pre) => {
+			const source = pre.textContent ?? "";
+			const container = document.createElement("div");
+			container.className = "pele-diagram not-prose";
+			pre.replaceWith(container);
+			try {
+				await mountAsync(container, source, { fontFamily, fontSize });
+			} catch (error) {
+				// Syntax errors are rendered in place by pele itself; this catches failures to mount at all, such as a diagram chunk failing to load.
+				// Falling back to the source keeps the post readable.
+				container.replaceWith(pre);
+				console.error("Failed to render Mermaid diagram", error);
+			}
+		}),
+	);
+}
+</script>

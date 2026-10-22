@@ -1,0 +1,54 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { TextLink } from "@/components/text-link";
+import { CvEntry } from "@/features/about/components/cv-entry";
+import { messages } from "@/lib/i18n/messages";
+import { localeFromPath, localizedPath } from "@/lib/i18n/ui";
+
+interface Props {
+	entries: CollectionEntry<"project">[];
+}
+const { entries } = Astro.props;
+const locale = localeFromPath(Astro.url.pathname);
+const projectsPath = localizedPath("/projects/", locale);
+---
+
+{entries.length > 0 && (
+	<section class="cv-section" aria-labelledby="cv-projects">
+		<h2 id="cv-projects" lang={locale}>
+			{messages[locale].projects}
+		</h2>
+		<ul class="cv-project-links">
+			{entries.map(({ data: entry }) => (
+				<li lang={entry.lang}>
+					<a
+						href={localizedPath(
+							`/projects/${entry.slug.split("/").map(encodeURIComponent).join("/")}/`,
+							locale,
+						)}
+					>
+						{entry.name}
+					</a>
+				</li>
+			))}
+		</ul>
+		<TextLink className="cv-all-projects" href={projectsPath} lang={locale}>
+			{messages[locale].allProjects} <span aria-hidden="true">→</span>
+		</TextLink>
+		<div class="cv-project-summaries">
+			{entries.map(({ data: entry }) => (
+				<CvEntry
+					lang={entry.lang}
+					title={entry.name}
+					subtitle={entry.role}
+					start={entry.start}
+					end={entry.end}
+					dateLocale={locale}
+					description={entry.description}
+					url={entry.href}
+					highlights={entry.printSummary}
+				/>
+			))}
+		</div>
+	</section>
+)}

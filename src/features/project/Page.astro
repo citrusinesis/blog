@@ -1,0 +1,23 @@
+---
+import { SITE_TITLE } from "@/consts";
+import { ProjectList } from "@/features/project/components/project-list";
+import { getProjects } from "@/features/project/lib/queries";
+import Base from "@/layouts/Base.astro";
+import { messages } from "@/lib/i18n/messages";
+import { localeFromPath } from "@/lib/i18n/ui";
+
+const locale = localeFromPath(Astro.url.pathname);
+const ui = messages[locale];
+const projects = await getProjects(locale);
+---
+
+<Base
+	title={`${ui.projects} — ${SITE_TITLE}`}
+	description={ui.projectDescription}
+>
+	<header class="page-heading">
+		<h1>{ui.projects}</h1>
+		<p>{ui.projectDescription}</p>
+	</header>
+	<ProjectList projects={projects} locale={locale} />
+</Base>

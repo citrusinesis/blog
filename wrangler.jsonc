@@ -1,0 +1,9 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "jihosong",
+	"compatibility_date": "2026-10-23",
+	"assets": {
+		"directory": "./dist"
+	},
+	"routes": [{ "pattern": "jihosong.dev", "custom_domain": true }]
+}

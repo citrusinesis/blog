@@ -1,0 +1,39 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { CvEntry } from "@/features/about/components/cv-entry";
+import { messages } from "@/lib/i18n/messages";
+import { localeFromPath } from "@/lib/i18n/ui";
+
+interface Props {
+	entries: CollectionEntry<"cv">["data"]["education"];
+}
+const { entries } = Astro.props;
+const locale = localeFromPath(Astro.url.pathname);
+const ui = messages[locale];
+---
+
+{entries.length > 0 && (
+	<section class="cv-section" aria-labelledby="cv-education">
+		<h2 id="cv-education" lang={locale}>
+			{ui.cvEducation}
+		</h2>
+		{entries.map((entry) => (
+			<CvEntry
+				title={entry.institution}
+				subtitle={entry.qualification}
+				start={entry.start}
+				end={entry.end}
+				highlights={entry.highlights}
+				location={entry.location}
+				endLabel={
+					entry.expectedGraduation
+						? locale === "ko"
+							? `${entry.expectedGraduation.year}년${entry.expectedGraduation.semester ? ` ${entry.expectedGraduation.semester}학기` : ""} 졸업 예정`
+							: `Expected ${entry.expectedGraduation.semester ? (entry.expectedGraduation.semester === 1 ? "Spring " : "Fall ") : ""}${entry.expectedGraduation.year}`
+						: undefined
+				}
+				dateLocale={locale}
+			/>
+		))}
+	</section>
+)}

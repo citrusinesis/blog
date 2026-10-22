@@ -1,0 +1,105 @@
+.cv {
+	margin-top: 2.75rem;
+	font-size: calc(0.875rem + var(--font-size-step));
+	line-height: 1.7;
+	overflow-wrap: anywhere;
+}
+.cv-kicker {
+	margin-bottom: 0.75rem;
+	color: var(--muted-foreground);
+	font-size: calc(0.75rem + var(--font-size-step));
+}
+.cv-heading h1 {
+	font-size: calc(1.75rem + var(--font-size-step));
+	font-weight: 550;
+	line-height: 1.2;
+	letter-spacing: -0.04em;
+}
+.cv-headline {
+	margin-top: 0.625rem;
+	color: var(--muted-foreground);
+}
+.cv-contacts {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.25rem 1.25rem;
+	margin-top: 1rem;
+	font-size: calc(0.8125rem + var(--font-size-step));
+}
+.cv a {
+	text-decoration: underline;
+	text-decoration-color: var(--border);
+	text-underline-offset: 3px;
+}
+.cv a:hover {
+	color: var(--ring);
+}
+.cv-summary {
+	margin-top: 1.5rem;
+	white-space: pre-line;
+}
+.cv-section {
+	margin-top: 2.5rem;
+}
+.cv-section h2 {
+	margin-bottom: 1.25rem;
+	border-top: 1px solid var(--border);
+	padding-top: 0.875rem;
+	color: var(--muted-foreground);
+	font-size: calc(0.8125rem + var(--font-size-step));
+	font-weight: 400;
+}
+.cv-entry + .cv-entry {
+	margin-top: 1.5rem;
+}
+.cv-entry-heading {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.25rem 1rem;
+}
+.cv-entry h3 {
+	font-weight: 550;
+}
+.cv-dates,
+.cv-location {
+	color: var(--muted-foreground);
+	font-size: calc(0.75rem + var(--font-size-step));
+}
+.cv-subtitle {
+	color: var(--muted-foreground);
+}
+.cv-highlights {
+	margin-top: 0.5rem;
+	padding-left: 1.1em;
+	list-style: disc;
+}
+.cv-highlights li + li {
+	margin-top: 0.25rem;
+}
+.cv-skills {
+	display: grid;
+	gap: 0.75rem;
+}
+.cv-skills dt {
+	font-weight: 500;
+}
+.cv-skills dd {
+	color: var(--muted-foreground);
+}
+
+.cv-project-summaries {
+	display: none;
+}
+
+.cv-project-links li + li {
+	margin-top: 0.5rem;
+}
+
+.cv-all-projects {
+	display: inline-block;
+	margin-top: 1rem;
+	color: var(--muted-foreground);
+	font-size: calc(0.75rem + var(--font-size-step));
+}

@@ -1,0 +1,27 @@
+---
+import { SITE_TITLE } from "@/consts";
+import { getPosts } from "@/features/blog/lib/queries";
+import Writing from "@/features/blog/sections/Writing.astro";
+import Introduction from "@/features/profile/sections/Introduction.astro";
+import { getProjects } from "@/features/project/lib/queries";
+import Projects from "@/features/project/sections/Projects.astro";
+import Base from "@/layouts/Base.astro";
+import { localeFromPath } from "@/lib/i18n/ui";
+import { getProfile } from "@/lib/profile";
+
+const locale = localeFromPath(Astro.url.pathname);
+const [profile, projects] = await Promise.all([
+	getProfile(locale),
+	getProjects(locale),
+]);
+const posts = (await getPosts(locale)).slice(0, 5);
+---
+
+<Base
+	title={SITE_TITLE}
+	description={`${profile.intro} ${profile.description}`}
+>
+	<Introduction profile={profile} />
+	<Projects projects={projects.slice(0, 5)} />
+	<Writing posts={posts} />
+</Base>

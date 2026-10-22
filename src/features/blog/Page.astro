@@ -1,0 +1,23 @@
+---
+import { SITE_TITLE } from "@/consts";
+import { PostList } from "@/features/blog/components/post-list";
+import { getPosts } from "@/features/blog/lib/queries";
+import Base from "@/layouts/Base.astro";
+import { messages } from "@/lib/i18n/messages";
+import { localeFromPath } from "@/lib/i18n/ui";
+
+const locale = localeFromPath(Astro.url.pathname);
+const ui = messages[locale];
+const posts = await getPosts(locale);
+---
+
+<Base
+	title={`${ui.writing} — ${SITE_TITLE}`}
+	description={ui.writingDescription}
+>
+	<header class="page-heading">
+		<h1>{ui.writing}</h1>
+		<p>{ui.writingDescription}</p>
+	</header>
+	<PostList posts={posts} locale={locale} />
+</Base>

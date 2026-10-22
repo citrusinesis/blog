@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { messages } from "@/lib/i18n/messages";
+import { localeFromPath } from "@/lib/i18n/ui";
+
+interface Props {
+	entries: CollectionEntry<"cv">["data"]["skills"];
+}
+const { entries } = Astro.props;
+const locale = localeFromPath(Astro.url.pathname);
+---
+
+{entries.length > 0 && (
+	<section class="cv-section" aria-labelledby="cv-skills">
+		<h2 id="cv-skills" lang={locale}>
+			{messages[locale].cvSkills}
+		</h2>
+		<dl class="cv-skills">
+			{entries.map((entry) => (
+				<div>
+					<dt>{entry.name}</dt>
+					<dd>{entry.items.join(", ")}</dd>
+				</div>
+			))}
+		</dl>
+	</section>
+)}

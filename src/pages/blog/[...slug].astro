@@ -1,0 +1,12 @@
+---
+import PostPage, {
+	type Props as PostPageProps,
+} from "@/features/blog/PostPage.astro";
+
+export { getStaticPaths } from "@/features/blog/lib/routes";
+
+type Props = PostPageProps;
+const { post, metadata } = Astro.props;
+---
+
+<PostPage post={post} metadata={metadata} />

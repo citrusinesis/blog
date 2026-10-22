@@ -1,0 +1,18 @@
+---
+import { type CollectionEntry, render } from "astro:content";
+import BlogPost from "@/features/blog/layouts/BlogPost.astro";
+
+import type { LanguageMetadata } from "@/lib/i18n/ui";
+
+export interface Props {
+	post: CollectionEntry<"blog">;
+	metadata: LanguageMetadata;
+}
+
+const { post, metadata } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BlogPost {...post.data} metadata={metadata}>
+	<Content />
+</BlogPost>

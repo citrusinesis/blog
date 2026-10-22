@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { messages } from "@/lib/i18n/messages";
+import { localeFromPath } from "@/lib/i18n/ui";
+
+interface Props {
+	profile: CollectionEntry<"profile">["data"];
+}
+
+const { profile } = Astro.props;
+const locale = localeFromPath(Astro.url.pathname);
+const ui = messages[locale];
+---
+
+<section class="intro" aria-label={ui.introduction}>
+	<p lang={profile.lang}>{profile.intro}<br>{profile.description}</p>
+	{(profile.github || profile.email) && (
+		<div class="contact-links">
+			{profile.github && <a href={profile.github}>GitHub</a>}
+			{profile.email && <a href={`mailto:${profile.email}`}>Email</a>}
+		</div>
+	)}
+</section>

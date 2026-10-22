@@ -1,0 +1,49 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { CvEntry } from "@/features/about/components/cv-entry";
+import { messages } from "@/lib/i18n/messages";
+import { localeFromPath } from "@/lib/i18n/ui";
+
+interface Props {
+	entries: CollectionEntry<"cv">["data"]["experience"];
+}
+const { entries } = Astro.props;
+const locale = localeFromPath(Astro.url.pathname);
+const ui = messages[locale];
+---
+
+{entries.length > 0 && (
+	<section class="cv-section" aria-labelledby="cv-experience">
+		<h2 id="cv-experience" lang={locale}>
+			{ui.cvExperience}
+		</h2>
+		{entries.map((entry) => (
+			<CvEntry
+				title={[entry.role, entry.team].filter(Boolean).join(", ")}
+				subtitle={entry.organization}
+				location={entry.location}
+				start={entry.start}
+				end={entry.end}
+				url={entry.url}
+				highlights={[
+					...entry.highlights,
+					...entry.responsibilities,
+					...entry.achievements.map((achievement) =>
+						[
+							achievement.action,
+							achievement.result,
+							achievement.evidence,
+							achievement.technologies.length
+								? achievement.technologies.join(", ")
+								: undefined,
+						]
+							.filter(Boolean)
+							.join(" - "),
+					),
+				]}
+				currentLabel={entry.current ? ui.cvPresent : undefined}
+				dateLocale={locale}
+			/>
+		))}
+	</section>
+)}

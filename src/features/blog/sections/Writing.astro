@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { TextLink } from "@/components/text-link";
+import { PostList } from "@/features/blog/components/post-list";
+import { messages } from "@/lib/i18n/messages";
+import { localeFromPath, localizedPath } from "@/lib/i18n/ui";
+
+interface Props {
+	posts: CollectionEntry<"blog">[];
+}
+
+const { posts } = Astro.props;
+const locale = localeFromPath(Astro.url.pathname);
+const ui = messages[locale];
+---
+
+<section class="home-section" aria-labelledby="writing-title">
+	<h2 id="writing-title" class="section-heading">{ui.writing}</h2>
+	<PostList posts={posts} locale={locale} />
+	<TextLink className="all-posts" href={localizedPath("/blog/", locale)}
+		>{ui.allWriting} <span aria-hidden="true">→</span></TextLink
+	>
+</section>

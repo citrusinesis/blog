@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { TextLink } from "@/components/text-link";
+import { ProjectList } from "@/features/project/components/project-list";
+import { messages } from "@/lib/i18n/messages";
+import { localeFromPath, localizedPath } from "@/lib/i18n/ui";
+
+interface Props {
+	projects: CollectionEntry<"project">[];
+}
+
+const { projects } = Astro.props;
+const locale = localeFromPath(Astro.url.pathname);
+const ui = messages[locale];
+---
+
+{projects.length > 0 && (
+	<section class="home-section" aria-labelledby="projects-title">
+		<h2 id="projects-title" class="section-heading">
+			{ui.projects}
+		</h2>
+		<ProjectList projects={projects} headingLevel={3} locale={locale} />
+		<TextLink className="all-posts" href={localizedPath("/projects/", locale)}>
+			{ui.allProjects} <span aria-hidden="true">→</span>
+		</TextLink>
+	</section>
+)}

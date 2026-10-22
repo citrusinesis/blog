@@ -1,0 +1,14 @@
+---
+import { SITE_TITLE } from "@/consts";
+
+import { localeFromPath, localizedPath } from "@/lib/i18n/ui";
+
+const locale = localeFromPath(Astro.url.pathname);
+const home = localizedPath("/", locale);
+const isHome = Astro.url.pathname === home;
+const Name = isHome ? "h1" : "div";
+---
+
+<header class="site-header">
+	<Name class="site-name"><a href={home}>{SITE_TITLE}</a></Name>
+</header>

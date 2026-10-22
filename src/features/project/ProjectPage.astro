@@ -1,0 +1,18 @@
+---
+import { type CollectionEntry, render } from "astro:content";
+import Project from "@/features/project/layouts/Project.astro";
+
+import type { LanguageMetadata } from "@/lib/i18n/ui";
+
+export interface Props {
+	project: CollectionEntry<"project">;
+	metadata: LanguageMetadata;
+}
+
+const { project, metadata } = Astro.props;
+const { Content } = await render(project);
+---
+
+<Project {...project.data} metadata={metadata}>
+	<Content />
+</Project>
