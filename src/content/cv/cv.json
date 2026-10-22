@@ -97,7 +97,7 @@
 		},
 		{
 			"name": "Systems & Data",
-			"items": ["ETL pipelines", "Web crawlers", "VMMs for agents"]
+			"items": ["ETL pipelines", "Web crawlers"]
 		},
 		{
 			"name": "Infrastructure",
