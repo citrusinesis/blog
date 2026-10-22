@@ -37,7 +37,7 @@ The production address is `https://jihosong.dev`, configured both in Astro and t
 
 ## Deployment
 
-The site is pre-rendered Astro HTML served with Cloudflare Workers Static Assets. `wrangler.jsonc` deploys `dist/` to the `jihosong` Worker and connects `jihosong.dev` as a Custom Domain. No SSR adapter or Worker entry script is needed. `packageManager` pins pnpm for CI; Node.js 24 matches the development shell. `pnpm-workspace.yaml` allows the native install scripts used by esbuild, sharp and workerd.
+The site is pre-rendered Astro HTML served with Cloudflare Workers Static Assets. `wrangler.jsonc` deploys `dist/` to the `blog` Worker and connects `jihosong.dev` as a Custom Domain. No SSR adapter or Worker entry script is needed. `packageManager` pins pnpm for CI; Node.js 24 matches the development shell. `pnpm-workspace.yaml` allows the native install scripts used by esbuild, sharp and workerd.
 
 ### Local deployment
 
