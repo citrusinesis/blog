@@ -40,7 +40,7 @@
 					"technologies": ["Rust", "PostgreSQL", "OpenAlex"]
 				},
 				{
-					"action": "Nix 기반 개발·인프라 환경, GitHub Actions self-hosted runner 배포 파이프라인, 인바운드 없는 서버 접근 구조를 포함한 사내 배포 표준 및 IaC 확립",
+					"action": "Nix 기반 개발·인프라 환경과 사내 배포 표준 및 IaC 확립",
 					"technologies": [
 						"Nix",
 						"OpenTofu",
@@ -49,14 +49,17 @@
 						"AWS",
 						"GCP",
 						"EKS",
-						"Talos",
-						"Tailscale",
-						"Cloudflare Tunnel"
+						"Talos"
 					]
 				},
 				{
-					"action": "RTX Pro 6000 Server Edition 4장이 포함된 Proxmox 기반 사내 연구용 서버 유지보수 및 운영",
-					"technologies": ["Proxmox"]
+					"action": "RTX Pro 6000 Server Edition 4장이 포함된 Proxmox 기반 사내 연구용 서버를 인바운드 없는 접근 구조와 GitHub Actions self-hosted runner 기반으로 유지보수·운영",
+					"technologies": [
+						"Proxmox",
+						"GitHub Actions",
+						"Tailscale",
+						"Cloudflare Tunnel"
+					]
 				}
 			]
 		},
