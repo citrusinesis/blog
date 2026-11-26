@@ -28,7 +28,7 @@
 					"technologies": ["Go", "Firecracker"]
 				},
 				{
-					"action": "Built a batch OpenSearch indexing pipeline in Rust using a Postbox architecture",
+					"action": "Built a channel-based fan-out/fan-in batch OpenSearch indexing pipeline in Rust",
 					"technologies": ["Rust", "OpenSearch"]
 				},
 				{

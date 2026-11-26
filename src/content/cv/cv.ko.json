@@ -28,7 +28,7 @@
 					"technologies": ["Go", "Firecracker"]
 				},
 				{
-					"action": "Postbox 아키텍처 기반 OpenSearch 배치 단위 인덱싱 파이프라인을 Rust로 설계·구현",
+					"action": "채널 기반 fan-out/fan-in 구조의 OpenSearch 배치 단위 인덱싱 파이프라인을 Rust로 설계·구현",
 					"technologies": ["Rust", "OpenSearch"]
 				},
 				{
