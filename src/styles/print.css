@@ -128,6 +128,27 @@
 	.cv-highlights li + li {
 		margin-top: 0.5mm;
 	}
+	.cv-subentries {
+		margin-top: 1.4mm;
+		padding-left: 3.5mm;
+		border-left: 0.5pt solid #777;
+	}
+	.cv-subentry {
+		break-inside: auto;
+	}
+	.cv-subentry + .cv-subentry {
+		margin-top: 1.8mm;
+	}
+	.cv-subentry-heading {
+		display: block;
+		break-inside: avoid;
+		break-after: avoid;
+	}
+	.cv-subentry h4 {
+		font-size: 9.5pt;
+		font-weight: 700;
+		break-after: avoid;
+	}
 	.cv-skills {
 		display: block;
 	}

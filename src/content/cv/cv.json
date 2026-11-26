@@ -15,49 +15,70 @@
 	"experience": [
 		{
 			"organization": "Asteromorph",
-			"role": "Head of DX (Engineering Lead)",
 			"start": "2026-01",
 			"current": true,
-			"responsibilities": [
-				"Lead the DX Team (5 engineers) across the academic database search engine, agent framework, and infrastructure."
-			],
-			"achievements": [
+			"location": "Seoul, South Korea",
+			"roles": [
 				{
-					"action": "Developing a multi-tenant Firecracker sandbox system supporting memory overcommit via ballooning",
-					"technologies": ["Go", "Firecracker"]
-				},
-				{
-					"action": "Built a channel-based fan-out/fan-in batch OpenSearch indexing pipeline in Rust",
-					"technologies": ["Rust", "OpenSearch"]
-				},
-				{
-					"action": "Implemented a long-running (12h+) MCP server targeting the 2025-11-25 specification with a Redis-backed task protocol prior to official support",
-					"technologies": ["Rust", "rmcp", "MCP", "Redis"]
-				},
-				{
-					"action": "Built an academic paper metadata crawler in Rust to augment an internal PostgreSQL dataset converted from OpenAlex",
-					"technologies": ["Rust", "PostgreSQL", "OpenAlex"]
-				},
-				{
-					"action": "Established internal deployment standards, Nix-based development and infrastructure environments, and IaC workflows across on-premises and cloud clusters",
-					"technologies": [
-						"Nix",
-						"OpenTofu",
-						"Terramate",
-						"Proxmox",
-						"AWS",
-						"GCP",
-						"EKS",
-						"Talos"
+					"role": "Head of DX (Engineering Lead)",
+					"start": "2026-09",
+					"current": true,
+					"responsibilities": [
+						"Lead the DX Team (5 engineers) across the academic database search engine, agent framework, and infrastructure."
+					],
+					"achievements": [
+						{
+							"action": "Developing a multi-tenant Firecracker sandbox system supporting memory overcommit via ballooning",
+							"technologies": ["Go", "Firecracker"]
+						},
+						{
+							"action": "Maintain Proxmox-based internal research servers (including four RTX Pro 6000 Server Edition GPUs) with zero-inbound access and GitHub Actions self-hosted runners",
+							"technologies": [
+								"Proxmox",
+								"GitHub Actions",
+								"Tailscale",
+								"Cloudflare Tunnel"
+							]
+						}
 					]
 				},
 				{
-					"action": "Maintain Proxmox-based internal research servers (including four RTX Pro 6000 Server Edition GPUs) with zero-inbound access and GitHub Actions self-hosted runners",
-					"technologies": [
-						"Proxmox",
-						"GitHub Actions",
-						"Tailscale",
-						"Cloudflare Tunnel"
+					"role": "Research Engineer",
+					"start": "2026-03",
+					"end": "2026-09",
+					"achievements": [
+						{
+							"action": "Built a channel-based fan-out/fan-in batch OpenSearch indexing pipeline in Rust",
+							"technologies": ["Rust", "OpenSearch"]
+						},
+						{
+							"action": "Established internal deployment standards, Nix-based development and infrastructure environments, and IaC workflows across on-premises and cloud clusters",
+							"technologies": [
+								"Nix",
+								"OpenTofu",
+								"Terramate",
+								"Proxmox",
+								"AWS",
+								"GCP",
+								"EKS",
+								"Talos"
+							]
+						}
+					]
+				},
+				{
+					"role": "Research Engineer Intern",
+					"start": "2026-01",
+					"end": "2026-02",
+					"achievements": [
+						{
+							"action": "Built an academic paper metadata crawler in Rust to augment an internal PostgreSQL dataset converted from OpenAlex",
+							"technologies": ["Rust", "PostgreSQL", "OpenAlex"]
+						},
+						{
+							"action": "Implemented a long-running (12h+) MCP server targeting the 2025-11-25 specification with a Redis-backed task protocol prior to official support",
+							"technologies": ["Rust", "rmcp", "MCP", "Redis"]
+						}
 					]
 				}
 			]

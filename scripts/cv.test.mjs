@@ -182,3 +182,39 @@ test("CV references resolve shared projects with locale fallback and explicit pr
 		false,
 	);
 });
+
+test("multi-role experience entries validate grouped roles and current-role constraints", () => {
+	const grouped = {
+		organization: "Test organization",
+		start: "2026-01",
+		current: true,
+		roles: [
+			{ role: "Lead", start: "2026-09", current: true },
+			{ role: "Engineer", start: "2026-03", end: "2026-09" },
+		],
+	};
+	const parsed = cvSchema.parse({ ...identity, experience: [grouped] });
+	assert.equal(parsed.experience[0].roles.length, 2);
+	assert.equal(parsed.experience[0].roles[0].end, undefined);
+	assert.equal(
+		cvSchema.safeParse({
+			...identity,
+			experience: [
+				{
+					...grouped,
+					roles: [
+						{ role: "Lead", start: "2026-09", end: "2026-10", current: true },
+					],
+				},
+			],
+		}).success,
+		false,
+	);
+	assert.equal(
+		cvSchema.safeParse({
+			...identity,
+			experience: [{ organization: "Test organization", start: "2026-01" }],
+		}).success,
+		false,
+	);
+});

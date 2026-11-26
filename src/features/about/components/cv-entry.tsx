@@ -1,3 +1,11 @@
+export interface CvSubEntry {
+	title: string;
+	start?: string;
+	end?: string;
+	currentLabel?: string;
+	highlights?: readonly string[];
+}
+
 interface Props {
 	lang?: string;
 	title: string;
@@ -11,6 +19,7 @@ interface Props {
 	dateLocale?: string;
 	url?: string;
 	highlights?: readonly string[];
+	subEntries?: readonly CvSubEntry[];
 }
 function formatDate(value: string, locale: string) {
 	if (!value.includes("-")) return value;
@@ -33,6 +42,7 @@ export function CvEntry({
 	dateLocale = "en",
 	url,
 	highlights = [],
+	subEntries = [],
 }: Props) {
 	return (
 		<div className="cv-entry" lang={lang}>
@@ -71,6 +81,44 @@ export function CvEntry({
 						<li key={highlight}>{highlight}</li>
 					))}
 				</ul>
+			)}
+			{subEntries.length > 0 && (
+				<div className="cv-subentries">
+					{subEntries.map((sub) => (
+						<div
+							className="cv-subentry"
+							key={`${sub.title}-${sub.start ?? ""}`}
+						>
+							<div className="cv-subentry-heading">
+								<h4>{sub.title}</h4>
+								{(sub.start || sub.end || sub.currentLabel) && (
+									<p className="cv-dates" lang={dateLocale}>
+										{sub.start && (
+											<time dateTime={sub.start}>
+												{formatDate(sub.start, dateLocale)}
+											</time>
+										)}
+										{sub.start && (sub.end || sub.currentLabel) && " - "}
+										{sub.end ? (
+											<time dateTime={sub.end}>
+												{formatDate(sub.end, dateLocale)}
+											</time>
+										) : (
+											sub.currentLabel
+										)}
+									</p>
+								)}
+							</div>
+							{sub.highlights && sub.highlights.length > 0 && (
+								<ul className="cv-highlights">
+									{sub.highlights.map((highlight) => (
+										<li key={highlight}>{highlight}</li>
+									))}
+								</ul>
+							)}
+						</div>
+					))}
+				</div>
 			)}
 		</div>
 	);

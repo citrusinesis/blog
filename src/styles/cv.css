@@ -78,6 +78,24 @@
 .cv-highlights li + li {
 	margin-top: 0.25rem;
 }
+.cv-subentries {
+	margin-top: 0.75rem;
+	padding-left: 1rem;
+	border-left: 1px solid var(--border);
+}
+.cv-subentry + .cv-subentry {
+	margin-top: 1.125rem;
+}
+.cv-subentry-heading {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.25rem 1rem;
+}
+.cv-subentry h4 {
+	font-weight: 500;
+}
 .cv-skills {
 	display: grid;
 	gap: 0.75rem;

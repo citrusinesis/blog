@@ -16,14 +16,18 @@ const locale = localeFromPath(Astro.url.pathname);
 const ui = messages[locale];
 const { cv, metadata, printProjects } = await getCv(locale);
 const currentRole = cv.experience.find((entry) => entry.current);
+const activeSubRole =
+	currentRole?.roles.find((role) => role.current) ?? currentRole?.roles[0];
 const aboutUrl = new URL(metadata.canonicalPath, Astro.site).href;
 const jsonLd = personJsonLd({
 	name: cv.name,
 	url: aboutUrl,
 	description: cv.summary ?? cv.headline,
-	jobTitle: currentRole
-		? [currentRole.role, currentRole.team].filter(Boolean).join(", ")
-		: cv.headline,
+	jobTitle: activeSubRole
+		? [activeSubRole.role, activeSubRole.team].filter(Boolean).join(", ")
+		: currentRole
+			? [currentRole.role, currentRole.team].filter(Boolean).join(", ")
+			: cv.headline,
 	worksFor: currentRole?.organization,
 	sameAs: cv.links.map((link) => link.href),
 });

@@ -15,49 +15,70 @@
 	"experience": [
 		{
 			"organization": "Asteromorph",
-			"role": "Head of DX (Engineering Lead)",
 			"start": "2026-01",
 			"current": true,
-			"responsibilities": [
-				"학술 데이터베이스 검색엔진, 에이전트 프레임워크, 인프라를 담당하는 DX 팀(5명)을 리딩합니다."
-			],
-			"achievements": [
+			"location": "대한민국, 서울",
+			"roles": [
 				{
-					"action": "Firecracker 기반 멀티테넌트 샌드박스 시스템 개발 및 ballooning 기반 메모리 오버커밋 지원",
-					"technologies": ["Go", "Firecracker"]
-				},
-				{
-					"action": "채널 기반 fan-out/fan-in 구조의 OpenSearch 배치 단위 인덱싱 파이프라인을 Rust로 설계·구현",
-					"technologies": ["Rust", "OpenSearch"]
-				},
-				{
-					"action": "공식 지원 이전 시점에 MCP 2025-11-25 스펙 기반 rmcp와 Redis Task 프로토콜로 12시간 이상 실행되는 장시간 MCP 서버 구현",
-					"technologies": ["Rust", "rmcp", "MCP", "Redis"]
-				},
-				{
-					"action": "사내 PostgreSQL로 변환된 OpenAlex 데이터를 보강(augment)하는 논문 메타데이터 크롤러를 Rust로 구현",
-					"technologies": ["Rust", "PostgreSQL", "OpenAlex"]
-				},
-				{
-					"action": "Nix 기반 개발·인프라 환경과 사내 배포 표준 및 IaC 확립",
-					"technologies": [
-						"Nix",
-						"OpenTofu",
-						"Terramate",
-						"Proxmox",
-						"AWS",
-						"GCP",
-						"EKS",
-						"Talos"
+					"role": "Head of DX (Engineering Lead)",
+					"start": "2026-09",
+					"current": true,
+					"responsibilities": [
+						"학술 데이터베이스 검색엔진, 에이전트 프레임워크, 인프라를 담당하는 DX 팀(5명)을 리딩합니다."
+					],
+					"achievements": [
+						{
+							"action": "Firecracker 기반 멀티테넌트 샌드박스 시스템 개발 및 ballooning 기반 메모리 오버커밋 지원",
+							"technologies": ["Go", "Firecracker"]
+						},
+						{
+							"action": "RTX Pro 6000 Server Edition 4장이 포함된 Proxmox 기반 사내 연구용 서버를 인바운드 없는 접근 구조와 GitHub Actions self-hosted runner 기반으로 유지보수·운영",
+							"technologies": [
+								"Proxmox",
+								"GitHub Actions",
+								"Tailscale",
+								"Cloudflare Tunnel"
+							]
+						}
 					]
 				},
 				{
-					"action": "RTX Pro 6000 Server Edition 4장이 포함된 Proxmox 기반 사내 연구용 서버를 인바운드 없는 접근 구조와 GitHub Actions self-hosted runner 기반으로 유지보수·운영",
-					"technologies": [
-						"Proxmox",
-						"GitHub Actions",
-						"Tailscale",
-						"Cloudflare Tunnel"
+					"role": "Research Engineer",
+					"start": "2026-03",
+					"end": "2026-09",
+					"achievements": [
+						{
+							"action": "채널 기반 fan-out/fan-in 구조의 OpenSearch 배치 단위 인덱싱 파이프라인을 Rust로 설계·구현",
+							"technologies": ["Rust", "OpenSearch"]
+						},
+						{
+							"action": "Nix 기반 개발·인프라 환경과 사내 배포 표준 및 IaC 확립",
+							"technologies": [
+								"Nix",
+								"OpenTofu",
+								"Terramate",
+								"Proxmox",
+								"AWS",
+								"GCP",
+								"EKS",
+								"Talos"
+							]
+						}
+					]
+				},
+				{
+					"role": "Research Engineer Intern",
+					"start": "2026-01",
+					"end": "2026-02",
+					"achievements": [
+						{
+							"action": "사내 PostgreSQL로 변환된 OpenAlex 데이터를 보강(augment)하는 논문 메타데이터 크롤러를 Rust로 구현",
+							"technologies": ["Rust", "PostgreSQL", "OpenAlex"]
+						},
+						{
+							"action": "공식 지원 이전 시점에 MCP 2025-11-25 스펙 기반 rmcp와 Redis Task 프로토콜로 12시간 이상 실행되는 장시간 MCP 서버 구현",
+							"technologies": ["Rust", "rmcp", "MCP", "Redis"]
+						}
 					]
 				}
 			]
@@ -67,7 +88,7 @@
 			"role": "백엔드 개발자",
 			"start": "2023-07",
 			"end": "2024-01",
-			"location": "서울",
+			"location": "대한민국, 서울",
 			"highlights": [
 				"ASEAN Cyber Shield의 온라인 사이버보안 교육 및 해킹방어대회 플랫폼 서버를 개발했습니다.",
 				"Jeopardy 스타일 해킹방어대회 서버를 구축하고 Django로 프로토타입을 구현했습니다."

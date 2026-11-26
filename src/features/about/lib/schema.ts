@@ -7,6 +7,27 @@ const url = z
 	.url()
 	.refine((value) => /^https?:\/\//.test(value), "Use an HTTP(S) URL");
 const highlights = z.array(z.string().min(1)).default([]);
+const achievement = z.object({
+	action: z.string().min(1),
+	result: z.string().optional(),
+	evidence: z.string().optional(),
+	technologies: z.array(z.string().min(1)).default([]),
+});
+const roleEntry = z
+	.object({
+		role: z.string().min(1),
+		team: z.string().optional(),
+		start: date,
+		end: date.optional(),
+		current: z.boolean().default(false),
+		highlights,
+		responsibilities: highlights,
+		achievements: z.array(achievement).default([]),
+	})
+	.refine(
+		(entry) => !(entry.current && entry.end),
+		"A current role cannot have an end date",
+	);
 
 export const cvSchema = z.object({
 	slug: z.string(),
@@ -22,7 +43,7 @@ export const cvSchema = z.object({
 			z
 				.object({
 					organization: z.string().min(1),
-					role: z.string().min(1),
+					role: z.string().min(1).optional(),
 					team: z.string().optional(),
 					start: date,
 					end: date.optional(),
@@ -31,20 +52,16 @@ export const cvSchema = z.object({
 					url: url.optional(),
 					highlights,
 					responsibilities: highlights,
-					achievements: z
-						.array(
-							z.object({
-								action: z.string().min(1),
-								result: z.string().optional(),
-								evidence: z.string().optional(),
-								technologies: z.array(z.string().min(1)).default([]),
-							}),
-						)
-						.default([]),
+					achievements: z.array(achievement).default([]),
+					roles: z.array(roleEntry).default([]),
 				})
 				.refine(
 					(entry) => !(entry.current && entry.end),
 					"A current role cannot have an end date",
+				)
+				.refine(
+					(entry) => Boolean(entry.role) || entry.roles.length > 0,
+					"Experience entry must define a role or roles",
 				),
 		)
 		.default([]),

@@ -10,6 +10,34 @@ interface Props {
 const { entries } = Astro.props;
 const locale = localeFromPath(Astro.url.pathname);
 const ui = messages[locale];
+
+function formatHighlights(entry: {
+	highlights: readonly string[];
+	responsibilities: readonly string[];
+	achievements: readonly {
+		action: string;
+		result?: string;
+		evidence?: string;
+		technologies: readonly string[];
+	}[];
+}) {
+	return [
+		...entry.highlights,
+		...entry.responsibilities,
+		...entry.achievements.map((achievement) =>
+			[
+				achievement.action,
+				achievement.result,
+				achievement.evidence,
+				achievement.technologies.length
+					? achievement.technologies.join(", ")
+					: undefined,
+			]
+				.filter(Boolean)
+				.join(" - "),
+		),
+	];
+}
 ---
 
 {entries.length > 0 && (
@@ -17,33 +45,32 @@ const ui = messages[locale];
 		<h2 id="cv-experience" lang={locale}>
 			{ui.cvExperience}
 		</h2>
-		{entries.map((entry) => (
-			<CvEntry
-				title={[entry.role, entry.team].filter(Boolean).join(", ")}
-				subtitle={entry.organization}
-				location={entry.location}
-				start={entry.start}
-				end={entry.end}
-				url={entry.url}
-				highlights={[
-					...entry.highlights,
-					...entry.responsibilities,
-					...entry.achievements.map((achievement) =>
-						[
-							achievement.action,
-							achievement.result,
-							achievement.evidence,
-							achievement.technologies.length
-								? achievement.technologies.join(", ")
-								: undefined,
-						]
-							.filter(Boolean)
-							.join(" - "),
-					),
-				]}
-				currentLabel={entry.current ? ui.cvPresent : undefined}
-				dateLocale={locale}
-			/>
-		))}
+		{entries.map((entry) => {
+			const hasRoles = entry.roles.length > 0;
+			return (
+				<CvEntry
+					title={
+						hasRoles
+							? entry.organization
+							: [entry.role, entry.team].filter(Boolean).join(", ")
+					}
+					subtitle={hasRoles ? undefined : entry.organization}
+					location={entry.location}
+					start={entry.start}
+					end={entry.end}
+					url={entry.url}
+					highlights={formatHighlights(entry)}
+					subEntries={entry.roles.map((sub) => ({
+						title: [sub.role, sub.team].filter(Boolean).join(", "),
+						start: sub.start,
+						end: sub.end,
+						currentLabel: sub.current ? ui.cvPresent : undefined,
+						highlights: formatHighlights(sub),
+					}))}
+					currentLabel={entry.current ? ui.cvPresent : undefined}
+					dateLocale={locale}
+				/>
+			);
+		})}
 	</section>
 )}
