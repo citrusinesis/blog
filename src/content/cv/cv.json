@@ -112,29 +112,11 @@
 			"year": 2019
 		}
 	],
-	"certifications": [
-		{
-			"name": "Craftsman Information Processing (정보처리기능사)",
-			"issuer": "Human Resources Development Service of Korea"
-		},
-		{
-			"name": "Network Administrator Level 2 (네트워크관리사 2급)",
-			"issuer": "Korea Information and Communications Qualification Association"
-		}
-	],
+	"certifications": [],
 	"skills": [
 		{
 			"name": "Languages",
-			"items": [
-				"Rust",
-				"Go",
-				"TypeScript",
-				"JavaScript",
-				"Java",
-				"Kotlin",
-				"Python",
-				"SQL"
-			]
+			"items": ["Rust", "Go", "TypeScript", "Python", "SQL"]
 		},
 		{
 			"name": "Systems & Data",
@@ -158,30 +140,15 @@
 		},
 		{
 			"name": "Backend",
-			"items": [
-				"Axum",
-				"Echo",
-				"Fiber",
-				"NestJS",
-				"Spring Boot",
-				"FastAPI",
-				"Django"
-			]
+			"items": ["Axum", "Echo", "FastAPI", "NestJS"]
 		},
 		{
 			"name": "Frontend",
-			"items": ["React", "Next.js", "TanStack Start", "Vite"]
+			"items": ["React", "Next.js", "TanStack Start"]
 		},
 		{
 			"name": "Databases & Search",
-			"items": [
-				"PostgreSQL",
-				"Redis",
-				"OpenSearch",
-				"MySQL",
-				"MariaDB",
-				"MongoDB"
-			]
+			"items": ["PostgreSQL", "Redis", "OpenSearch"]
 		},
 		{
 			"name": "Tools",
