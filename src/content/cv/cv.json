@@ -40,8 +40,9 @@
 					"technologies": ["Rust", "PostgreSQL", "OpenAlex"]
 				},
 				{
-					"action": "Established internal deployment standards, IaC workflows with GitHub Actions self-hosted runners, and zero-inbound server access across on-premises and cloud clusters",
+					"action": "Established internal deployment standards, Nix-based development and infrastructure environments, IaC workflows with GitHub Actions self-hosted runners, and zero-inbound server access across on-premises and cloud clusters",
 					"technologies": [
+						"Nix",
 						"OpenTofu",
 						"Terramate",
 						"Proxmox",
@@ -139,6 +140,7 @@
 		{
 			"name": "Infrastructure",
 			"items": [
+				"Nix",
 				"Proxmox",
 				"Kubernetes (EKS, Talos)",
 				"OpenTofu",

@@ -40,8 +40,9 @@
 					"technologies": ["Rust", "PostgreSQL", "OpenAlex"]
 				},
 				{
-					"action": "GitHub Actions self-hosted runner 기반 배포 파이프라인과 인바운드 없는 서버 접근 구조를 포함한 사내 배포 표준 및 IaC 확립",
+					"action": "Nix 기반 개발·인프라 환경, GitHub Actions self-hosted runner 배포 파이프라인, 인바운드 없는 서버 접근 구조를 포함한 사내 배포 표준 및 IaC 확립",
 					"technologies": [
+						"Nix",
 						"OpenTofu",
 						"Terramate",
 						"Proxmox",
@@ -139,6 +140,7 @@
 		{
 			"name": "인프라",
 			"items": [
+				"Nix",
 				"Proxmox",
 				"Kubernetes (EKS, Talos)",
 				"OpenTofu",
