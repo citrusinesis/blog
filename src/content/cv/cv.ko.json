@@ -19,8 +19,45 @@
 			"team": "DX Team",
 			"start": "2026-01",
 			"current": true,
-			"responsibilities": [],
-			"achievements": []
+			"responsibilities": [
+				"학술 데이터베이스 검색엔진, 에이전트 프레임워크, 인프라를 담당하는 DX 팀을 리딩합니다."
+			],
+			"achievements": [
+				{
+					"action": "Firecracker 기반 멀티테넌트 샌드박스 시스템 개발 및 ballooning 기반 메모리 오버커밋 지원",
+					"technologies": ["Go", "Firecracker"]
+				},
+				{
+					"action": "Postbox 아키텍처 기반 OpenSearch 배치 단위 인덱싱 파이프라인을 Rust로 설계·구현",
+					"technologies": ["Rust", "OpenSearch"]
+				},
+				{
+					"action": "공식 지원 이전 시점에 MCP 2025-11-25 스펙 기반 rmcp와 Redis Task 프로토콜로 12시간 이상 실행되는 장시간 MCP 서버 구현",
+					"technologies": ["Rust", "rmcp", "MCP", "Redis"]
+				},
+				{
+					"action": "사내 PostgreSQL로 변환된 OpenAlex 데이터를 보강(augment)하는 논문 메타데이터 크롤러를 Rust로 구현",
+					"technologies": ["Rust", "PostgreSQL", "OpenAlex"]
+				},
+				{
+					"action": "GitHub Actions self-hosted runner 기반 배포 파이프라인과 인바운드 없는 서버 접근 구조를 포함한 사내 배포 표준 및 IaC 확립",
+					"technologies": [
+						"OpenTofu",
+						"Terramate",
+						"Proxmox",
+						"AWS",
+						"GCP",
+						"EKS",
+						"Talos",
+						"Tailscale",
+						"Cloudflare Tunnel"
+					]
+				},
+				{
+					"action": "RTX Pro 6000 Server Edition 4장이 포함된 Proxmox 기반 사내 연구용 서버 유지보수 및 운영",
+					"technologies": ["Proxmox"]
+				}
+			]
 		},
 		{
 			"organization": "Stealien",
@@ -97,38 +134,53 @@
 		},
 		{
 			"name": "시스템·데이터",
-			"items": ["ETL 파이프라인", "웹 크롤러"]
+			"items": ["Firecracker", "ETL 파이프라인", "웹 크롤러", "MCP"]
 		},
 		{
 			"name": "인프라",
-			"items": ["Kubernetes", "OpenTofu", "GPU 서버 운영"]
-		},
-		{
-			"name": "백엔드",
-			"items": ["Axum", "Echo", "NestJS", "Spring Boot", "FastAPI"]
-		},
-		{
-			"name": "프론트엔드",
-			"items": ["React", "Next.js", "Tanstack Start", "Vite"]
-		},
-		{
-			"name": "데이터베이스",
-			"items": ["PostgreSQL", "MySQL", "MariaDB", "MongoDB", "Redis"]
-		},
-		{
-			"name": "도구·인프라",
 			"items": [
-				"Docker",
-				"Kubernetes",
 				"Proxmox",
-				"Terraform",
+				"Kubernetes (EKS, Talos)",
 				"OpenTofu",
-				"Git",
-				"GitHub",
-				"GitHub Actions",
+				"Terramate",
+				"Terraform",
+				"Tailscale",
+				"Cloudflare Tunnel",
+				"GPU 서버 운영",
 				"AWS",
 				"GCP"
 			]
+		},
+		{
+			"name": "백엔드",
+			"items": [
+				"Axum",
+				"Echo",
+				"Fiber",
+				"NestJS",
+				"Spring Boot",
+				"FastAPI",
+				"Django"
+			]
+		},
+		{
+			"name": "프론트엔드",
+			"items": ["React", "Next.js", "TanStack Start", "Vite"]
+		},
+		{
+			"name": "데이터베이스·검색",
+			"items": [
+				"PostgreSQL",
+				"Redis",
+				"OpenSearch",
+				"MySQL",
+				"MariaDB",
+				"MongoDB"
+			]
+		},
+		{
+			"name": "도구",
+			"items": ["Docker", "Podman", "Git", "GitHub", "GitLab", "GitHub Actions"]
 		}
 	],
 	"printProjects": ["network-tunneler"],
