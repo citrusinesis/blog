@@ -1,6 +1,6 @@
 {
 	"name": "Jiho Song",
-	"headline": "Head, DX Team · Asteromorph",
+	"headline": "Head of DX (Engineering Lead) · Asteromorph",
 	"email": "me@jihosong.dev",
 	"links": [
 		{
@@ -15,8 +15,7 @@
 	"experience": [
 		{
 			"organization": "Asteromorph",
-			"role": "Head",
-			"team": "DX Team",
+			"role": "Head of DX (Engineering Lead)",
 			"start": "2026-01",
 			"current": true,
 			"responsibilities": [
