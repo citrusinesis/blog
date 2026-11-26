@@ -6,19 +6,39 @@ import { SITE_TITLE } from "@/consts";
 import { initializeTheme } from "@/features/theme/scripts/bootstrap";
 import {
 	type LanguageMetadata,
+	type Locale,
 	localeFromPath,
 	localizedPath,
 } from "@/lib/i18n/ui";
+import { type JsonLd, serializeJsonLd } from "@/lib/seo";
 
 interface Props {
 	title: string;
 	description: string;
 	image?: ImageMetadata;
 	metadata?: LanguageMetadata;
+	ogType?: "website" | "article";
+	publishedTime?: Date;
+	modifiedTime?: Date;
+	jsonLd?: JsonLd | readonly JsonLd[];
 }
 
+const OG_LOCALE: Record<Locale, string> = {
+	en: "en_US",
+	ko: "ko_KR",
+};
+
 const themeScript = `(${initializeTheme.toString()})();`;
-const { title, description, image, metadata } = Astro.props;
+const {
+	title,
+	description,
+	image,
+	metadata,
+	ogType = "website",
+	publishedTime,
+	modifiedTime,
+	jsonLd,
+} = Astro.props;
 const locale = localeFromPath(Astro.url.pathname);
 const canonicalURL = new URL(
 	metadata?.canonicalPath ?? Astro.url.pathname,
@@ -30,12 +50,23 @@ const alternates =
 		lang,
 		href: localizedPath(Astro.url.pathname, lang),
 	}));
+const defaultAlternate = alternates.find((alt) => alt.lang === "en");
+const alternateOgLocales = alternates
+	.filter((alt) => alt.lang !== locale)
+	.map((alt) => OG_LOCALE[alt.lang]);
+const imageURL = image ? new URL(image.src, Astro.site) : undefined;
+const structuredData = jsonLd
+	? Array.isArray(jsonLd)
+		? jsonLd
+		: [jsonLd]
+	: [];
 ---
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#fdfdfc">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <script is:inline set:html={themeScript} />
 <link rel="sitemap" href="/sitemap-index.xml">
 <link
@@ -50,14 +81,44 @@ const alternates =
 {alternates.map(({ lang, href }) => (
 	<link rel="alternate" hreflang={lang} href={new URL(href, Astro.site)} />
 ))}
+{defaultAlternate && (
+	<link
+		rel="alternate"
+		hreflang="x-default"
+		href={new URL(defaultAlternate.href, Astro.site)}
+	/>
+)}
 
 <title>{title}</title>
 <meta name="description" content={description}>
 
-<meta property="og:type" content="website">
+<meta property="og:type" content={ogType}>
+<meta property="og:site_name" content={SITE_TITLE}>
+<meta property="og:locale" content={OG_LOCALE[locale]}>
+{alternateOgLocales.map((altLocale) => (
+	<meta property="og:locale:alternate" content={altLocale} />
+))}
 <meta property="og:url" content={canonicalURL}>
 <meta property="og:title" content={title}>
 <meta property="og:description" content={description}>
-{image && <meta property="og:image" content={new URL(image.src, Astro.url)}>}
+{imageURL && <meta property="og:image" content={imageURL}>}
+{ogType === "article" && publishedTime && (
+	<meta
+		property="article:published_time"
+		content={publishedTime.toISOString()}
+	/>
+)}
+{ogType === "article" && modifiedTime && (
+	<meta property="article:modified_time" content={modifiedTime.toISOString()} />
+)}
 
-<meta name="twitter:card" content={image ? "summary_large_image" : "summary"}>
+<meta
+	name="twitter:card"
+	content={imageURL ? "summary_large_image" : "summary"}
+>
+<meta name="twitter:title" content={title}>
+<meta name="twitter:description" content={description}>
+{imageURL && <meta name="twitter:image" content={imageURL}>}
+{structuredData.map((entry) => (
+	<script type="application/ld+json" set:html={serializeJsonLd(entry)} />
+))}

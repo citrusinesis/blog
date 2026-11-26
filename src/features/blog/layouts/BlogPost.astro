@@ -9,12 +9,25 @@ import Base from "@/layouts/Base.astro";
 import { messages } from "@/lib/i18n/messages";
 import type { LanguageMetadata } from "@/lib/i18n/ui";
 import { localeFromPath, localizedPath } from "@/lib/i18n/ui";
+import { blogPostingJsonLd } from "@/lib/seo";
 
 type Props = CollectionEntry<"blog">["data"] & { metadata: LanguageMetadata };
 const { title, description, pubDate, updatedDate, heroImage, lang, metadata } =
 	Astro.props;
 const locale = localeFromPath(Astro.url.pathname);
 const ui = messages[locale];
+const canonicalUrl = new URL(metadata.canonicalPath, Astro.site).href;
+const jsonLd = blogPostingJsonLd({
+	headline: title,
+	description,
+	url: canonicalUrl,
+	datePublished: pubDate,
+	dateModified: updatedDate,
+	inLanguage: lang,
+	authorName: SITE_TITLE,
+	authorUrl: new URL("/", Astro.site).href,
+	image: heroImage ? new URL(heroImage.src, Astro.site).href : undefined,
+});
 ---
 
 <Base
@@ -22,6 +35,10 @@ const ui = messages[locale];
 	description={description}
 	image={heroImage}
 	metadata={metadata}
+	ogType="article"
+	publishedTime={pubDate}
+	modifiedTime={updatedDate}
+	jsonLd={jsonLd}
 >
 	<TextLink className="back-link" href={localizedPath("/blog/", locale)}>
 		<span aria-hidden="true">←</span>

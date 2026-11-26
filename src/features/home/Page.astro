@@ -6,8 +6,9 @@ import Introduction from "@/features/profile/sections/Introduction.astro";
 import { getProjects } from "@/features/project/lib/queries";
 import Projects from "@/features/project/sections/Projects.astro";
 import Base from "@/layouts/Base.astro";
-import { localeFromPath } from "@/lib/i18n/ui";
+import { localeFromPath, localizedPath } from "@/lib/i18n/ui";
 import { getProfile } from "@/lib/profile";
+import { personJsonLd, webSiteJsonLd } from "@/lib/seo";
 
 const locale = localeFromPath(Astro.url.pathname);
 const [profile, projects] = await Promise.all([
@@ -15,12 +16,25 @@ const [profile, projects] = await Promise.all([
 	getProjects(locale),
 ]);
 const posts = (await getPosts(locale)).slice(0, 5);
+const description = `${profile.intro} ${profile.description}`;
+const pageUrl = new URL(localizedPath("/", locale), Astro.site).href;
+const jsonLd = [
+	webSiteJsonLd({
+		name: SITE_TITLE,
+		url: pageUrl,
+		description,
+		inLanguage: locale,
+	}),
+	personJsonLd({
+		name: profile.name,
+		url: new URL("/", Astro.site).href,
+		description,
+		sameAs: profile.github ? [profile.github] : [],
+	}),
+];
 ---
 
-<Base
-	title={SITE_TITLE}
-	description={`${profile.intro} ${profile.description}`}
->
+<Base title={SITE_TITLE} description={description} jsonLd={jsonLd}>
 	<Introduction profile={profile} />
 	<Projects projects={projects.slice(0, 5)} />
 	<Writing posts={posts} />
