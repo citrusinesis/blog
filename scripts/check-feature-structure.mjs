@@ -1,6 +1,6 @@
 import { readdir } from "node:fs/promises";
 
-// Keep this list in sync with the feature-folder contract in README.md.
+// Keep this list in sync with the feature-folder contract in AGENTS.md.
 const allowed = new Set([
 	"components",
 	"sections",
