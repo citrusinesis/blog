@@ -1,6 +1,6 @@
 {
 	"name": "송지호",
-	"headline": "Head of Developer Experience (Engineering Lead) · Asteromorph",
+	"headline": "Head of Developer Experience · Asteromorph",
 	"email": "me@jihosong.dev",
 	"links": [
 		{
@@ -20,11 +20,11 @@
 			"location": "대한민국, 서울",
 			"roles": [
 				{
-					"role": "Head of Developer Experience (Engineering Lead)",
+					"role": "Head of Developer Experience",
 					"start": "2026-09",
 					"current": true,
 					"responsibilities": [
-						"학술 데이터베이스 검색엔진, 에이전트 프레임워크, 인프라를 담당하는 DX 팀(5명)을 리딩합니다."
+						"학술 데이터베이스 검색엔진, 에이전트 프레임워크, 인프라를 담당하는 Developer Experience 팀(엔지니어 5명)을 리딩합니다."
 					],
 					"achievements": [
 						{

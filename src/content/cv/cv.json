@@ -1,6 +1,6 @@
 {
 	"name": "Jiho Song",
-	"headline": "Head of Developer Experience (Engineering Lead) · Asteromorph",
+	"headline": "Head of Developer Experience · Asteromorph",
 	"email": "me@jihosong.dev",
 	"links": [
 		{
@@ -20,11 +20,11 @@
 			"location": "Seoul, South Korea",
 			"roles": [
 				{
-					"role": "Head of Developer Experience (Engineering Lead)",
+					"role": "Head of Developer Experience",
 					"start": "2026-09",
 					"current": true,
 					"responsibilities": [
-						"Lead the DX Team (5 engineers) across the academic database search engine, agent framework, and infrastructure."
+						"Lead a 5-engineer Developer Experience team across the academic database search engine, agent framework, and infrastructure."
 					],
 					"achievements": [
 						{
