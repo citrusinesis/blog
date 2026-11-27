@@ -1,6 +1,6 @@
 {
 	"name": "송지호",
-	"headline": "Head of DX (Engineering Lead) · Asteromorph",
+	"headline": "Head of Developer Experience (Engineering Lead) · Asteromorph",
 	"email": "me@jihosong.dev",
 	"links": [
 		{
@@ -20,7 +20,7 @@
 			"location": "대한민국, 서울",
 			"roles": [
 				{
-					"role": "Head of DX (Engineering Lead)",
+					"role": "Head of Developer Experience (Engineering Lead)",
 					"start": "2026-09",
 					"current": true,
 					"responsibilities": [
